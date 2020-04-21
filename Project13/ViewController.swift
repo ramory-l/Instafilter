@@ -35,10 +35,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+            self.imageView.alpha = 1
+        })
         applyProcessing()
     }
 
     @objc func importPicture() {
+        imageView.alpha = 0
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
